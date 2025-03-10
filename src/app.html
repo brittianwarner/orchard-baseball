@@ -9,6 +9,12 @@
 		/>
 		<link rel="icon" href="/favicon.ico" sizes="48x48" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
+		<!-- iOS PWA specific tags -->
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="apple-mobile-web-app-title" content="Orchard Baseball" />
+		<!-- Prevent automatic phone number detection -->
+		<meta name="format-detection" content="telephone=no" />
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover" class="h-full scroll-smooth">
