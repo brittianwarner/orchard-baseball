@@ -20,12 +20,13 @@ const config = {
 	],
 	kit: {
 		adapter: adapter({
-			runtime: 'edge'
+			runtime: 'nodejs22.x'
 		}),
 		inlineStyleThreshold: 2048,
 		serviceWorker: {
 			register: false
 		},
+
 		csrf: {
 			checkOrigin: process.env.NODE_ENV !== 'development'
 		}
