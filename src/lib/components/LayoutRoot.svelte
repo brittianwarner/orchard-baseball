@@ -53,10 +53,41 @@
 						>
 							Stopwatch
 						</a>
+						<!-- Add Roster link separately -->
+						<a
+							href="/roster"
+							class="hover:text-primary-700 rounded-md px-3 py-2 text-sm font-medium text-gray-700 {currentSection ===
+							'roster'
+								? 'text-primary-700 border-primary-500 border-b-2'
+								: ''}"
+						>
+							Roster
+						</a>
 					</div>
 				</div>
 				<!-- Mobile menu button and stopwatch icon -->
 				<div class="flex items-center space-x-2 md:hidden">
+					<!-- Roster icon for mobile -->
+					<a
+						href="/roster"
+						class="hover:text-primary-700 focus:ring-primary-500 inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 focus:ring-2 focus:outline-none focus:ring-inset"
+					>
+						<span class="sr-only">Roster</span>
+						<svg
+							class="h-6 w-6"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							aria-hidden="true"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"
+							/>
+						</svg>
+					</a>
 					<!-- Stopwatch icon for mobile -->
 					<a
 						href="/stopwatch"
@@ -148,6 +179,17 @@
 				>
 					Stopwatch
 				</a>
+				<!-- Add Roster link separately -->
+				<a
+					href="/roster"
+					onclick={closeMenu}
+					class="hover:text-primary-700 block rounded-md px-3 py-2 text-base font-medium text-gray-700 {currentSection ===
+					'roster'
+						? 'text-primary-700 bg-primary-50'
+						: ''}"
+				>
+					Roster
+				</a>
 			</div>
 		</div>
 	{/if}
@@ -155,7 +197,7 @@
 	<!-- Content -->
 	{#key appRune.pagePath}
 		<main
-			in:fly={{ x: 50, duration: 500, easing: quintOut }}
+			in:fly={{ x: 100, delay: 200, duration: 500, easing: quintOut }}
 			out:fly={{ x: -100, duration: 200, easing: quintOut }}
 			class="flex-grow"
 		>
@@ -182,6 +224,8 @@
 					<a href="/" class="text-primary-600 hover:text-primary-800 text-sm">Home</a>
 					<!-- Add Stopwatch link to footer as well -->
 					<a href="/stopwatch" class="text-primary-600 hover:text-primary-800 text-sm">Stopwatch</a>
+					<!-- Add Roster link to footer as well -->
+					<a href="/roster" class="text-primary-600 hover:text-primary-800 text-sm">Roster</a>
 				</div>
 			</div>
 		</div>
