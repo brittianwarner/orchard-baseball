@@ -20,27 +20,7 @@ const config = {
 	],
 	kit: {
 		adapter: adapter({
-			runtime: 'nodejs22.x',
-			isr: {
-				expiration: false
-			},
-			external: [
-				'path',
-				'crypto',
-				'fs',
-				'events',
-				'util',
-				'url',
-				'stream',
-				'mock-aws-s3',
-				'os',
-				'aws-sdk',
-				'nock',
-				'assert',
-				'path',
-				'child_process',
-				'node-fetch'
-			]
+			runtime: 'edge'
 		}),
 		inlineStyleThreshold: 2048,
 		serviceWorker: {
