@@ -195,15 +195,9 @@
 	{/if}
 
 	<!-- Content -->
-	{#key appRune.pagePath}
-		<main
-			in:fly={{ x: 100, delay: 200, duration: 500, easing: quintOut }}
-			out:fly={{ x: -100, duration: 200, easing: quintOut }}
-			class="flex-grow"
-		>
-			{@render children()}
-		</main>
-	{/key}
+	<main class="flex-grow">
+		{@render children()}
+	</main>
 
 	<!-- Footer -->
 	<footer class="border-t border-gray-200 bg-gray-50">
