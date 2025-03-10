@@ -1,4 +1,5 @@
 <script lang="ts">
+	// @ts-ignore: virtual module from Vite PWA plugin
 	import { useRegisterSW } from 'virtual:pwa-register/svelte';
 
 	const { needRefresh, updateServiceWorker, offlineReady } = useRegisterSW({

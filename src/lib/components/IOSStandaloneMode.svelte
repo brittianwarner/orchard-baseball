@@ -64,10 +64,21 @@
 
 			// Add iOS standalone mode class to body
 			document.body.classList.add('ios-standalone');
+			document.documentElement.classList.add('ios-standalone');
 
-			// Fix for iOS overscroll behavior
+			// Fix for iOS overscroll behavior while maintaining scrolling
 			document.documentElement.style.setProperty('overscroll-behavior', 'none');
 			document.body.style.setProperty('overscroll-behavior', 'none');
+
+			// Directly apply the padding to body
+			const safeAreaTop = 'env(safe-area-inset-top)';
+			document.body.style.paddingTop = safeAreaTop;
+
+			// Apply to additional container if needed
+			const mainContainer = document.querySelector('[data-sveltekit-body]');
+			if (mainContainer) {
+				(mainContainer as HTMLElement).style.paddingTop = safeAreaTop;
+			}
 
 			// Handle back gesture
 			window.addEventListener('popstate', () => {
@@ -83,33 +94,51 @@
 <!-- Add iOS standalone mode styles -->
 {#if isIOS && isInStandaloneMode}
 	<style global>
-		/* Add padding to account for the iOS status bar */
-		body.ios-standalone {
-			/* Default padding for status bar */
-			padding-top: env(safe-area-inset-top, 0);
-			padding-bottom: env(safe-area-inset-bottom, 0);
-			padding-left: env(safe-area-inset-left, 0);
-			padding-right: env(safe-area-inset-right, 0);
+		/* Critical: Ensure safe area padding for notch and status bar */
+		:root {
+			--safe-top: env(safe-area-inset-top);
 		}
 
-		/* Prevent pull-to-refresh and overscroll effects */
+		/* Direct approach to handle notch area */
+		body {
+			/* !important to override any other styles */
+			padding-top: env(safe-area-inset-top) !important;
+			box-sizing: border-box;
+		}
+
+		/* Also apply to key elements to ensure coverage */
+		body > div,
+		[data-sveltekit-body],
+		main,
+		header,
+		nav,
+		.app-header,
+		.navbar,
+		.top-bar {
+			padding-top: env(safe-area-inset-top) !important;
+			box-sizing: border-box;
+		}
+
+		/* Fixed elements need special handling */
+		.fixed-top,
+		.sticky-top,
+		div[style*='position: fixed'][style*='top'],
+		div[style*='position:fixed'][style*='top'] {
+			top: env(safe-area-inset-top) !important;
+		}
+
+		/* Ensure bottom elements respect safe area too */
+		.fixed-bottom {
+			bottom: env(safe-area-inset-bottom) !important;
+		}
+
+		/* Ensure scrolling works properly */
 		html,
 		body {
-			position: fixed;
 			width: 100%;
 			height: 100%;
-			overflow: auto;
 			overscroll-behavior: none;
 			-webkit-overflow-scrolling: touch;
-		}
-
-		/* Fixed elements positioning fix */
-		.fixed-bottom {
-			bottom: env(safe-area-inset-bottom, 0) !important;
-		}
-
-		.fixed-top {
-			top: env(safe-area-inset-top, 0) !important;
 		}
 	</style>
 {/if}

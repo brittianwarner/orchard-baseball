@@ -3,6 +3,7 @@
 	import { page as pageState } from '$app/state';
 	import LayoutRoot from '$lib/components/LayoutRoot.svelte';
 	import { appRune } from '$lib/app.svelte';
+	// @ts-ignore: virtual module from Vite PWA plugin
 	import { pwaInfo } from 'virtual:pwa-info';
 
 	let { children } = $props();
