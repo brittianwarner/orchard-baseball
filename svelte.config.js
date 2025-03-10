@@ -26,9 +26,6 @@ const config = {
 		serviceWorker: {
 			register: false
 		},
-		output: {
-			preloadStrategy: 'preload-js'
-		},
 		csrf: {
 			checkOrigin: process.env.NODE_ENV !== 'development'
 		}
