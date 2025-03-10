@@ -43,6 +43,9 @@ const config = {
 				'node-fetch'
 			]
 		}),
+		serviceWorker: {
+			register: false
+		},
 		csrf: {
 			checkOrigin: process.env.NODE_ENV !== 'development'
 		}
