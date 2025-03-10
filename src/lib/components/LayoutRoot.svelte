@@ -155,8 +155,8 @@
 	<!-- Content -->
 	{#key appRune.pagePath}
 		<main
-			in:fly={{ x: 50, duration: 300, easing: quintIn }}
-			out:fly={{ x: -50, duration: 200, easing: quintOut }}
+			in:fly={{ x: 50, duration: 500, easing: quintOut }}
+			out:fly={{ x: -100, duration: 200, easing: quintOut }}
 			class="flex-grow"
 		>
 			{@render children()}
