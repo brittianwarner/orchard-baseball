@@ -4,7 +4,6 @@
 	import LayoutRoot from '$lib/components/LayoutRoot.svelte';
 	import { appRune } from '$lib/app.svelte';
 	import { pwaInfo } from 'virtual:pwa-info';
-	import { onMount } from 'svelte';
 
 	let { children } = $props();
 
@@ -16,26 +15,6 @@
 	});
 
 	let webManifestLink = $state();
-
-	onMount(async () => {
-		if (pwaInfo) {
-			const { registerSW } = await import('virtual:pwa-register');
-			registerSW({
-				immediate: true,
-				onRegistered(r: ServiceWorkerRegistration) {
-					// uncomment following code if you want check for updates
-					// r && setInterval(() => {
-					//    console.log('Checking for sw update')
-					//    r.update()
-					// }, 20000 /* 20s for testing purposes */)
-					console.log(`SW Registered: ${r}`);
-				},
-				onRegisterError(error: Error) {
-					console.log('SW registration error', error);
-				}
-			});
-		}
-	});
 
 	$effect(() => {
 		if (pwaInfo) {
@@ -51,3 +30,7 @@
 <LayoutRoot>
 	{@render children()}
 </LayoutRoot>
+
+{#await import('$lib/components/ReloadPrompt.svelte') then { default: ReloadPrompt }}
+	<ReloadPrompt />
+{/await}
