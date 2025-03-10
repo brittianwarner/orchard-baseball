@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { useRegisterSW } from 'virtual:pwa-register/svelte';
+
 	const { needRefresh, updateServiceWorker, offlineReady } = useRegisterSW({
 		onRegistered(r: ServiceWorkerRegistration) {
 			// uncomment following code if you want check for updates
@@ -14,6 +15,7 @@
 			console.log('SW registration error', error);
 		}
 	});
+
 	const close = () => {
 		offlineReady.set(false);
 		needRefresh.set(false);

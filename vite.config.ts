@@ -11,6 +11,14 @@ export default defineConfig({
 			registerType: 'prompt',
 			injectRegister: 'auto',
 			strategies: 'generateSW',
+			scope: '/',
+			base: '/',
+			pwaAssets: {
+				config: true
+			},
+			injectManifest: {
+				globPatterns: ['client/**/*.{js,css,ico,png,svg,webp,woff,woff2}']
+			},
 			workbox: {
 				globPatterns: ['**/*.{js,css,html,svg,png,ico,webp,woff,woff2}'],
 				runtimeCaching: [

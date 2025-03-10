@@ -18,7 +18,6 @@ const config = {
 			rehypePlugins: [rehypeExternalLinks]
 		})
 	],
-
 	kit: {
 		adapter: adapter({
 			runtime: 'nodejs22.x',
@@ -43,8 +42,12 @@ const config = {
 				'node-fetch'
 			]
 		}),
+		inlineStyleThreshold: 2048,
 		serviceWorker: {
 			register: false
+		},
+		output: {
+			preloadStrategy: 'preload-js'
 		},
 		csrf: {
 			checkOrigin: process.env.NODE_ENV !== 'development'

@@ -1,25 +1,29 @@
-import { defineConfig, minimal2023Preset } from '@vite-pwa/assets-generator/config';
+import {
+	createAppleSplashScreens,
+	defineConfig,
+	minimal2023Preset
+} from '@vite-pwa/assets-generator/config';
 
 export default defineConfig({
 	// Use the minimal-2023 preset with customizations
+	headLinkOptions: {
+		preset: '2023'
+	},
 	preset: {
 		...minimal2023Preset,
-		maskable: {
-			...minimal2023Preset.maskable,
-			resizeOptions: {
-				background: '#2a5c2f', // Your green color
-				fit: 'contain',
-				position: 'center'
-			}
-		},
-		apple: {
-			...minimal2023Preset.apple,
-			resizeOptions: {
-				background: '#2a5c2f', // Your green color
-				fit: 'contain',
-				position: 'center'
-			}
-		}
+		appleSplashScreens: createAppleSplashScreens(
+			{
+				padding: 0.3,
+				resizeOptions: { fit: 'contain', background: 'white' },
+				darkResizeOptions: { fit: 'contain', background: 'black' },
+				linkMediaOptions: {
+					log: true,
+					addMediaScreen: true,
+					xhtml: true
+				}
+			},
+			['iPad Air 9.7"']
+		)
 	},
 	// The source image
 	images: ['static/logo.png']
