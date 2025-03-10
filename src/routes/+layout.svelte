@@ -34,3 +34,11 @@
 {#await import('$lib/components/ReloadPrompt.svelte') then { default: ReloadPrompt }}
 	<ReloadPrompt />
 {/await}
+
+{#await import('$lib/components/IOSPwaHelper.svelte') then { default: IOSPwaHelper }}
+	<IOSPwaHelper />
+{/await}
+
+{#await import('$lib/components/IOSStandaloneMode.svelte') then { default: IOSStandaloneMode }}
+	<IOSStandaloneMode />
+{/await}
