@@ -1,0 +1,47 @@
+{
+	"name": "orchard-baseball",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev --port 3000",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"format": "prettier --write .",
+		"lint": "prettier --check .",
+		"generate-pwa-assets": "pwa-assets-generator"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^4.0.0",
+		"@sveltejs/kit": "^2.19.0",
+		"@sveltejs/vite-plugin-svelte": "^5.0.3",
+		"@tailwindcss/forms": "^0.5.10",
+		"@tailwindcss/typography": "^0.5.16",
+		"@tailwindcss/vite": "^4.0.12",
+		"@types/hast": "^3.0.4",
+		"@vite-pwa/assets-generator": "^0.2.6",
+		"@vite-pwa/sveltekit": "^0.6.7",
+		"mdsvex": "^0.12.3",
+		"prettier": "^3.5.3",
+		"prettier-plugin-svelte": "^3.3.3",
+		"prettier-plugin-tailwindcss": "^0.6.11",
+		"svelte": "^5.22.6",
+		"svelte-check": "^4.1.5",
+		"tailwindcss": "^4.0.12",
+		"typescript": "^5.8.2",
+		"vite": "^6.2.1"
+	},
+	"dependencies": {
+		"@animotion/core": "^1.1.2",
+		"@sveltejs/adapter-vercel": "^5.6.3",
+		"rehype-external-links": "^3.0.0",
+		"remark-directive": "^4.0.0",
+		"remark-rehype": "^11.1.1",
+		"remark-video": "^0.10.0",
+		"svelte-preprocess": "^6.0.3",
+		"unist-util-visit": "^5.0.0"
+	}
+}
